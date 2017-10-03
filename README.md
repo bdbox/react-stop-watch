@@ -26,3 +26,5 @@ npm start
 * create-react-app
 
 ## Screenshot
+
+[screenshot](https://raw.githubusercontent.com/bdbox/react-stop-watch/master/public/screenshot.png)
