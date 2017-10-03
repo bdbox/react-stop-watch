@@ -12,7 +12,8 @@ class App extends Component {
 			minute: 0,
 			second: 0,
 			millisecond: 0,
-			intervalId: null
+			intervalId: null,
+			isRunning: false
 		}
 	}
 	
@@ -39,34 +40,44 @@ class App extends Component {
 			min = this.state.minute, 
 			sec = this.state.second,
 			msec = this.state.millisecond
-		this.state.intervalId = setInterval(() => {
-			msec = msec + 10
-			if (msec >= 1000) {
-				msec = 0
-				sec++
-			}
-			if (sec >= 60 ) {
-				sec = 0
-				min++
-			}
-			if (min >= 60 ) {
-				min = 0
-				hr++
-			}
-			if (hr >= 24) {
-				hr = 0
-			}
-			this.setState({
-				hour: hr,
-				minute: min,
-				second: sec,
-				millisecond: msec
-			})
-		}, 10);
+			
+		if (this.state.isRunning) {
+			return false;
+		}
+		this.setState({
+			intervalId: setInterval(() => {
+				msec = msec + 10
+				if (msec >= 1000) {
+					msec = 0
+					sec++
+				}
+				if (sec >= 60 ) {
+					sec = 0
+					min++
+				}
+				if (min >= 60 ) {
+					min = 0
+					hr++
+				}
+				if (hr >= 24) {
+					hr = 0
+				}
+				this.setState({
+					hour: hr,
+					minute: min,
+					second: sec,
+					millisecond: msec,
+					isRunning: true
+				})
+			}, 10)
+		})	
 	}
 	
 	clickPause() {
 		clearInterval(this.state.intervalId)
+		this.setState({
+			isRunning: false
+		})
 	}
 	
 	clickReset() {
@@ -76,7 +87,8 @@ class App extends Component {
 			minute: 0,
 			second: 0,
 			millisecond: 0,
-			intervalId: null
+			intervalId: null,
+			isRunning: false
 		})
 	}
 }
