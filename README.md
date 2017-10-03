@@ -27,4 +27,4 @@ npm start
 
 ## Screenshot
 
-[screenshot](https://raw.githubusercontent.com/bdbox/react-stop-watch/master/public/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/bdbox/react-stop-watch/master/public/screenshot.png)
